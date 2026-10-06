@@ -1,34 +1,30 @@
 # SHARIAGUARD
 
-Scholar-Led, AI-Screened, and Blockchain-Enforced Shariah Compliance for Every Akad in Islamic Fintech.
+SHARIAGUARD membantu memeriksa isi akad, menandai bagian yang perlu diperhatikan, meminta keputusan DPS, lalu menyimpan riwayat hasil pemeriksaan.
 
-## Prototype
+## Fitur
 
-This repository currently contains a single-file browser prototype in `index.html`.
+1. **Beranda** — melihat alur penggunaan SHARIAGUARD.
+2. **Periksa Akad** — masukkan teks akad dan jalankan pemeriksaan.
+3. **Pemeriksaan DPS** — DPS dapat menyetujui atau menolak setiap bagian yang ditandai.
+4. **Catatan Akad** — menyimpan akad yang sudah disetujui dan membuat sidik digital.
+5. **Riwayat** — melihat aktivitas yang sudah dilakukan.
+6. **Referensi** — melihat referensi yang digunakan dalam pemeriksaan.
 
-### Interactive flow
+## Cara menjalankan
 
-1. **Overview** — 3-layer SHARIAGUARD architecture.
-2. **Akad Screening** — edit an akad draft and run deterministic local screening rules.
-3. **DPS Review** — approve or reject flagged clauses.
-4. **Smart Contract** — generate a SHA-256 contract hash and simulate permissioned-ledger commit.
-5. **Audit Dashboard** — inspect the local audit event log and search events.
-6. **Fatwa Knowledge** — inspect the prototype's structured DSN-MUI references.
+Buka `index.html` di browser modern, atau gunakan server statis sederhana.
 
-### Local browser data
+## Data
 
-The prototype is intentionally designed to run without an external backend or API key. Application state is held in the browser runtime and can be extended to `localStorage`/IndexedDB for persistence.
+Versi saat ini menyimpan data di `localStorage` browser. Data tidak dikirim ke server.
 
-> **Important:** the screening engine and ledger are prototype simulations. They are not a production Shariah ruling engine or a live Hyperledger deployment. Final Shariah authority remains with qualified scholars/DPS.
+## Catatan
 
-## Run
+Pemeriksaan di aplikasi ini adalah bantuan awal. Hasilnya bukan keputusan hukum Syariah. Keputusan akhir tetap berada pada DPS.
 
-Open `index.html` directly in a modern browser, or serve the repository with any static HTTP server.
+## Alur demo
 
-## Competition demo
+**Beranda → Periksa Akad → Pemeriksaan DPS → Catatan Akad → Riwayat**
 
-Recommended demonstration:
-
-`Overview → Akad Screening → DPS Review → Smart Contract → Audit Dashboard`
-
-Use the demo Mudharabah contract to show a flagged late-payment-income clause, DPS approval, hash generation, ledger commit, and resulting audit trail.
+Gunakan contoh akad Mudharabah yang tersedia untuk melihat alur lengkap.
