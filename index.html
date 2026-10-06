@@ -354,9 +354,7 @@ function ledger(){
   <div class="ledgercards"><div class="ledgercard"><span>Akad</span><h4>${esc(state.screened.akad)}</h4><small>Hanya akad yang disetujui</small></div><div class="ledgercard"><span>Tempat data</span><h4>Perangkat ini</h4><small></small></div><div class="ledgercard"><span>Data pribadi</span><h4>Tidak dicatat di sini</h4><small>Data pribadi tidak disimpan di bagian ini</small></div></div>
   <div class="hash"><div><label>Sidik digital akad</label><code>${state.hash||'Belum dibuat'}</code></div><button class="btn primary" onclick="commitRecord()" ${approved?'':'disabled'}>${state.hash?'Simpan catatan':'Buat & simpan'} →</button></div>
   <div class="note">${state.status==='TERSIMPAN'?'Catatan sudah disimpan di perangkat.':'Sidik digital membantu mengetahui apakah isi akad berubah.'}</div>
-  <div class="ph" style="margin-top:18px"><h3>Ringkasan akad</h3><span class="sub">Data yang akan dicatat</span></div>
-  <pre class="payload">${esc(JSON.stringify({akad:state.screened.akad,status:state.status,enforce:['akad_disetujui','bagi_hasil_atau_margin','aturan_denda'],contract_hash:state.hash||'pending'},null,2))}</pre>
-  <div class="note">Sidik digital membantu mengetahui apakah isi akad berubah.</div></div>`
+</div></div>`
 }
 async function commitRecord(){
   if(state.status==='COMMITTED'){toast('Akad ini sudah dicatat.');return;}
