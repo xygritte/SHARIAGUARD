@@ -1,0 +1,57 @@
+name: Deploy SHARIAGUARD to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Validate static prototype
+        run: |
+          test -f index.html
+          grep -q "SHARIAGUARD" index.html
+          grep -q "localStorage" index.html
+          grep -q "function runScan" index.html
+          grep -q "function review" index.html
+          grep -q "function commitRecord" index.html
+          grep -q "function audit" index.html
+          echo "Static prototype validation passed."
+
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          printf '<meta name="robots" content="noindex">' > /tmp/meta.txt
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
