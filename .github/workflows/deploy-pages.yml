@@ -40,7 +40,7 @@ jobs:
           grep -q "function review" index.html
           grep -q "function commitRecord" index.html
           grep -q "function audit" index.html
-          node --check <(python3 - <<'PY'
+          python3 - <<'PY' > /tmp/shariaguard.js
           from pathlib import Path
           import re
           text = Path("index.html").read_text(encoding="utf-8")
@@ -49,7 +49,7 @@ jobs:
               raise SystemExit("Inline script not found")
           print(match.group(1))
           PY
-          )
+          node --check /tmp/shariaguard.js
           echo "Prototype validation passed."
 
       - name: Prepare site
