@@ -220,14 +220,14 @@ function loadState(){
 let state=loadState();
 function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
-function norm(s){return String(s||'').toRendaherCase().replace(/\s+/g,' ').trim()}
+function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 
 function scan(s){
   const t=norm(s), f=[];
   const mud=/mudharabah|qiradh/.test(t), mur=/murabahah/.test(t), mus=/musyarakah/.test(t);
   if(mud&&!/(nisbah|rasio).{0,80}(hasil|bagi)/.test(t))
-    f.push({id:'F-001',issue:'Nisbah bagi hasil belum jelas',severity:'tinggi',clause:'Nisbah bagi hasil belum ditemukan dengan jelas.',exp:'Rasio bagi hasil perlu disepakati sejak awal; bagian ini perlu diperiksa DPS.',ref:'DSN-MUI Fatwa 07/DSN-MUI/IV/2000 tentang Pembiayaan Mudharabah (Qiradh)',status:'menunggu'});
+    f.push({id:'F-001',issue:'Nisbah bagi hasil belum jelas',severity:'tinggi',clause:'Nisbah bagi hasil belum ditemukan dengan jelas.',exp:'Rasio bagi hasil perlu disepakati sejak awal; bagian ini perlu diperiksa DPS.',ref:'DSN-MUI Fatwa 07/DSN-MUI/IV/2000 tentang Pembiayaan Mudharabah (Qiradh)',status:'review'});
   if(mur&&!/(harga pokok|harga perolehan|cost price)/.test(t))
     f.push({id:'F-003',issue:'Harga pokok belum jelas',severity:'high',clause:'Harga pokok barang belum ditemukan dengan jelas.',exp:'Sistem belum menemukan harga pokok/perolehan dengan jelas.',ref:'DSN-MUI Fatwa 04/DSN-MUI/IV/2000 tentang Murabahah',status:'review'});
   if(/(late fee|biaya keterlambatan|denda keterlambatan|keterlambatan).{0,100}(pendapatan|income|platform)/.test(t))
@@ -263,7 +263,7 @@ function openModal(html){document.getElementById('modalbox').innerHTML=html;docu
 document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 
 function overview(){
-  const pending=state.findings.filter(f=>f.status==='menunggu').length;
+  const pending=state.findings.filter(f=>f.status==='review').length;
   document.getElementById('content').innerHTML=`<div class="grid">
   <section class="hero"><div><span class="pill">Pemeriksaan akad</span><h2>Periksa akad dengan lebih mudah dan jelas.</h2><p>Periksa isi akad, tandai bagian yang perlu diperiksa, lalu simpan hasil keputusan DPS.</p><div class="actions2"><button class="btn primary" onclick="go('screening')">⌕ Periksa akad</button><button class="btn secondary" onclick="document.getElementById('flow').scrollIntoView({behavior:'smooth'})">Lihat alur</button></div></div><div class="orbit"><div class="orb"></div><div class="orb b"></div><div class="core">✓</div><span class="node a">AI</span><span class="node b2">DPS</span></div></section>
   <section class="metrics">
@@ -272,13 +272,13 @@ function overview(){
     <div class="metric"><div class="mi">!</div><div><label>Perlu diperiksa</label><strong>${state.contracts.filter(c=>c.status==='Menunggu DPS').length+pending}</strong><small>Menunggu tindakan</small></div></div>
     <div class="metric"><div class="mi">◒</div><div><label>Nilai pemeriksaan</label><strong>${state.screened.score}%</strong><small>${esc(state.screened.akad)}</small></div></div>
   </section>
-  <section id="flow" class="panel"><div class="ph"><div><p class="eyebrow">Alur sistem</p><h3>Alur pemeriksaan</h3></div><span class="sub"></span></div><div class="flow">
+  <section id="flow" class="panel"><div class="ph"><div><p class="eyebrow">Alur sistem</p><h3>Alur pemeriksaan</h3></div></div><div class="flow">
     <div class="flowcard"><span class="fn">01</span><div class="fi">⌕</div><h4>Pemeriksaan dengan AI</h4><p>AI mencari bagian penting dalam akad dan mencocokkannya dengan referensi yang tersedia.</p></div><div class="arrow">→</div>
     <div class="flowcard human"><span class="fn">H</span><div class="fi">◉</div><h4>Pemeriksaan DPS</h4><p>DPS dapat menyetujui atau menolak bagian yang ditandai. Keputusan akhir tetap pada DPS.</p></div><div class="arrow">→</div>
     <div class="flowcard"><span class="fn">02</span><div class="fi">◈</div><h4>Pencatatan akad</h4><p>Simpan sidik digital dari akad yang sudah disetujui.</p></div><div class="arrow">→</div>
     <div class="flowcard"><span class="fn">03</span><div class="fi">≡</div><h4>Riwayat aktivitas</h4><p>Lihat siapa melakukan apa dan kapan.</p></div>
   </div></section>
-  <section class="split"><div class="panel"><div class="ph"><h3>Menu demo</h3><span class="sub"></span></div><div class="why">
+  <section class="split"><div class="panel"><div class="ph"><h3>Menu demo</h3></div><div class="why">
     <div class="reason" style="cursor:pointer" onclick="newContract()"><b>Akad baru</b><p>Buat akad baru untuk diperiksa.</p></div>
     <div class="reason" style="cursor:pointer" onclick="go('audit')"><b>Riwayat</b><p>Lihat riwayat aktivitas.</p></div>
   </div></div>
@@ -300,7 +300,7 @@ function screening(){
 function renderTemuan(fs){
   if(!fs.length)return '<div class="empty">✓ Tidak ada bagian yang ditandai oleh sistem. Keputusan akhir tetap memerlukan pemeriksaan DPS.</div>';
   return fs.map(f=>{
-    const st=f.status==='disetujui'?'<span class="status ok">Disetujui</span>':f.status==='ditolak'?'<span class="status bad">Ditolak</span>':'<span class="status">Menunggu DPS</span>';
+    const st=f.status==='approved'?'<span class="status ok">Disetujui</span>':f.status==='rejected'?'<span class="status bad">Ditolak</span>':'<span class="status">Menunggu DPS</span>';
     return `<div class="finding"><div class="findingtop"><b>${esc(f.issue)}</b><span class="risk">${esc(f.severity==='tinggi'?'tinggi':f.severity==='sedang'?'sedang':'rendah')}</span></div><p>${esc(f.clause)}</p><div class="ref"><span>${esc(f.ref)}</span>${st}</div></div>`
   }).join('')
 }
@@ -309,14 +309,14 @@ function runScan(){
   if(!state.contract){toast('Masukkan teks akad terlebih dahulu.');return;}
   state.screened=scan(state.contract);
   state.findings=state.screened.findings;
-  state.status='DIPERIKSA';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('en-GB'),'AI','Ditandai',state.screened.akad,'—']);
+  state.status='SCREENED';
+  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'AI','Ditandai',state.screened.akad,'—']);
   persist();screening();toast('Pemeriksaan selesai — temuan siap diperiksa DPS.')
 }
 
 function review(){
   const fs=state.findings;
-  document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Keputusan manusia</p><h3>Pemeriksaan DPS</h3></div><span class="pill">Menunggu keputusan</span></div>
+  document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Keputusan DPS</p><h3>Pemeriksaan DPS</h3></div><span class="pill">Menunggu keputusan</span></div>
   <div class="info">◉ <div><b>Keputusan DPS.</b> Temuan AI hanya menjadi bahan pemeriksaan. Keputusan akhir tetap pada DPS.</div></div>
   ${fs.length?fs.map(f=>reviewCard(f)).join(''):'<div class="empty">Belum ada akad yang perlu diperiksa. Periksa akad terlebih dahulu.</div>'}</div>`
 }
@@ -328,21 +328,22 @@ function reviewCard(f){
   <div><button class="btn secondary mini-btn" onclick="rejectFinding('${f.id}')">Tolak</button><button class="btn primary mini-btn" onclick="approveFinding('${f.id}')">Setujui</button></div></div></article>`
 }
 function rejectFinding(id){
-  state.findings=state.findings.map(f=>f.id===id?{...f,status:'ditolak'}:f);
-  state.status='DITOLAK';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('en-GB'),state.settings.dpsName,'Ditolak',state.screened.akad,'—']);
+  state.findings=state.findings.map(f=>f.id===id?{...f,status:'rejected'}:f);
+  state.status='DPS_REJECTED';
+  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),state.settings.dpsName,'Ditolak',state.screened.akad,'—']);
   persist();review();toast('Penolakan DPS berhasil dicatat.')
 }
 async function approveFinding(id){
-  state.findings=state.findings.map(f=>f.id===id?{...f,status:'disetujui'}:f);
-  const h=await sha(state.contract+'|'+id+'|APPROVED|'+Date.now());
-  state.hash=h;state.status='DISETUJUI';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('en-GB'),state.settings.dpsName,'Disetujui',state.screened.akad,h.slice(0,4)+'…'+h.slice(-4)]);
-  const rec=state.contracts.find(c=>c.id===state.currentContractId);
-  if(rec){rec.status='Disetujui';rec.risk='Reviewed';rec.hash=h.slice(0,4)+'…'+h.slice(-4)}
+  const target=state.findings.find(f=>f.id===id);
+  if(!target || target.status!=='review'){toast('Bagian ini sudah diproses.');return;}
+  state.findings=state.findings.map(f=>f.id===id?{...f,status:'approved'}:f);
+  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'DPS','Disetujui',state.screened.akad,'—']);
+  state.status='DPS_APPROVED';
+  state.hash='';
   persist();
   const allApproved=state.findings.length>0 && state.findings.every(f=>f.status==='approved');
-  if(allApproved){ledger();toast('Semua bagian disetujui DPS.');}else{review();toast('Bagian disetujui. Lanjutkan pemeriksaan.')}
+  if(allApproved){ledger();toast('Semua bagian disetujui DPS.');}
+  else{review();toast('Bagian disetujui. Lanjutkan pemeriksaan.');}
 }
 
 function ledger(){
@@ -360,10 +361,10 @@ async function commitRecord(){
   if(state.status==='COMMITTED'){toast('Akad ini sudah dicatat.');return;}
   if(!state.findings.length || !state.findings.every(f=>f.status==='approved')){toast('Semua temuan harus disetujui DPS terlebih dahulu.');return;}
   if(!state.hash)state.hash=await sha(state.contract+'|'+state.screened.akad+'|COMMIT|'+Date.now());
-  state.status='TERSIMPAN';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('en-GB'),'Catatan','Disimpan',state.screened.akad,state.hash.slice(0,4)+'…'+state.hash.slice(-4)]);
+  state.status='COMMITTED';
+  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'Catatan','Disimpan',state.screened.akad,state.hash.slice(0,4)+'…'+state.hash.slice(-4)]);
   const id='C-'+String(state.contracts.length+1).padStart(3,'0');
-  state.contracts.unshift({id,akad:state.screened.akad,status:'Disetujui',risk:'Verified',owner:'Demo',date:new Date().toISOString().slice(0,10),hash:state.hash.slice(0,4)+'…'+state.hash.slice(-4)});
+  state.contracts.unshift({id,akad:state.screened.akad,status:'Disetujui',risk:'Terverifikasi',owner:'Demo',date:new Date().toISOString().slice(0,10),hash:state.hash.slice(0,4)+'…'+state.hash.slice(-4)});
   persist();ledger();toast('Catatan akad berhasil disimpan.')
 }
 
@@ -394,9 +395,12 @@ function newContract(){
 function saveNewContract(){
   state.contract=document.getElementById('newText').value;
   state.selectedAkad=document.getElementById('newAkad').value;
+  state.contractOwner=document.getElementById('newOwner').value.trim()||'—';
+  state.currentContractId='';
+  state.hash='';
   state.screened=scan(state.contract);state.findings=state.screened.findings;state.status='DRAFT';
   state.currentContractId='';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('en-GB'),'Pengguna','Dibuat',state.screened.akad,'—']);
+  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'Pengguna','Dibuat',state.screened.akad,'—']);
   persist();closeModal();screening();toast('Akad baru dibuat dan disimpan di perangkat.')
 }
 
