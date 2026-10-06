@@ -29,8 +29,10 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Validate static prototype
+      - name: Validate prototype
+        shell: bash
         run: |
+          set -euo pipefail
           test -f index.html
           grep -q "SHARIAGUARD" index.html
           grep -q "localStorage" index.html
@@ -38,13 +40,22 @@ jobs:
           grep -q "function review" index.html
           grep -q "function commitRecord" index.html
           grep -q "function audit" index.html
-          echo "Static prototype validation passed."
+          node --check <(python3 - <<'PY'
+          from pathlib import Path
+          import re
+          text = Path("index.html").read_text(encoding="utf-8")
+          match = re.search(r"<script>([\s\S]*?)</script>", text)
+          if not match:
+              raise SystemExit("Inline script not found")
+          print(match.group(1))
+          PY
+          )
+          echo "Prototype validation passed."
 
       - name: Prepare site
         run: |
           mkdir -p _site
           cp index.html _site/index.html
-          printf '<meta name="robots" content="noindex">' > /tmp/meta.txt
           touch _site/.nojekyll
 
       - name: Upload Pages artifact
