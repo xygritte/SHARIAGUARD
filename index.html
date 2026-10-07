@@ -362,7 +362,9 @@ function rejectFinding(id){
   state.hash='';
   addEvent(state.settings.dpsName,'Ditolak',state.screened.akad,'—',state.currentContractId||'—');
   if(state.simulation.active&&state.simulation.scenario==='problem')state.simulation.step=3;
-  persist();review();toast('Penolakan DPS berhasil dicatat.')
+  persist();
+  if(state.simulation.active&&state.simulation.scenario==='problem'){ledger();toast('Penolakan DPS berhasil dicatat. Pencatatan akad diblokir.');}
+  else{review();toast('Penolakan DPS berhasil dicatat.');}
 }
 function approveAkad(){
   if(state.status!=='SCREENED'||state.findings.length){toast('Tidak ada akad tanpa temuan yang dapat disetujui pada tahap ini.');return;}
@@ -413,6 +415,10 @@ async function commitRecord(){
   persist();ledger();toast('Catatan akad berhasil disimpan.')
 }
 function audit(){
+  if(state.simulation.active&&state.simulation.scenario==='problem'&&state.status==='DPS_REJECTED'&&state.simulation.step<4){
+    state.simulation.step=4;
+    persist();
+  }
   const q=norm((document.getElementById('auditQ')?.value||''));
   const rows=state.events.filter(e=>!q||norm([e.id,e.time,e.actor,e.action,e.akad,e.hash,e.contractId].join(' ')).includes(q));
   document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Tahap 3</p><h3>Riwayat aktivitas</h3></div><span class="sub">DPS · Pemeriksa</span></div>
