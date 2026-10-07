@@ -34,6 +34,8 @@ jobs:
         run: |
           set -euo pipefail
           test -f index.html
+          test -f shariaguard.png
+          grep -q "shariaguard.png" index.html
           grep -q "SHARIAGUARD" index.html
           grep -q "localStorage" index.html
           grep -q "function runScan" index.html
