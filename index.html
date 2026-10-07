@@ -7,7 +7,8 @@
 <meta name="description" content="Pemeriksaan isi akad dengan bantuan AI dan keputusan DPS.">
 <style>
 :root{--bg:#080c1c;--sidebar:#0d1228;--panel:#11172d;--panel2:#151c36;--line:rgba(255,255,255,.09);--text:#edf1ff;--muted:#9aa3bd;--purple:#7769ff;--green:#73d3a5;--orange:#f1b66d;--red:#ef8f9b;--blue:#6cb8ff}
-*{box-sizing:border-box}html{overflow-x:hidden}body{margin:0;background:radial-gradient(circle at 78% 0%,rgba(119,105,255,.12),transparent 27%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,textarea,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible{outline:2px solid var(--purple);outline-offset:2px}.app{min-height:100vh;display:flex}.side{width:250px;position:fixed;inset:0 auto 0 0;background:rgba(13,18,40,.96);border-right:1px solid var(--line);padding:22px 15px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#7d6fff,#5149c7);display:grid;place-items:center;font-size:20px;box-shadow:0 12px 30px rgba(119,105,255,.26)}.brand b{display:block;font-size:13px;letter-spacing:.09em}.brand small{color:var(--muted);font-size:10px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#adb6ce;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:10px;align-items:center;font-size:12px}.nav button:hover{background:#151b33;color:white}.nav button.active{background:linear-gradient(90deg,rgba(119,105,255,.22),rgba(119,105,255,.05));color:#fff;box-shadow:inset 3px 0 0 var(--purple)}.main{margin-left:250px;width:calc(100% - 250px);padding:24px 30px 45px}.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}.eyebrow{margin:0 0 7px;color:#818aa8;font-size:9px;text-transform:uppercase;letter-spacing:.14em}.top h1{margin:0;font-size:27px}.actions{display:flex;align-items:center;gap:9px}.live{font-size:10px;color:#aeb8cf;border:1px solid var(--line);padding:8px 10px;border-radius:99px}.live:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px}.btn{border:1px solid transparent;border-radius:10px;padding:10px 13px;font-size:11px;font-weight:700}.primary{color:#fff;background:linear-gradient(135deg,#7d70ff,#5a53c8);box-shadow:0 10px 24px rgba(119,105,255,.16)}.secondary{color:#c8cee1;background:#191f39;border-color:var(--line)}.grid{display:grid;gap:15px}.hero{min-height:355px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 82% 38%,rgba(119,105,255,.21),transparent 23%),linear-gradient(135deg,#151b35,#0d1225 70%);padding:30px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;overflow:hidden}.pill{display:inline-block;font-size:9px;color:#d0ccff;border:1px solid rgba(119,105,255,.25);background:rgba(119,105,255,.13);padding:6px 9px;border-radius:99px}.hero h2{font-size:36px;line-height:1.07;letter-spacing:-.035em;max-width:650px;margin:14px 0}.hero p{max-width:650px;color:#adb6cf;font-size:13px;line-height:1.65}.hero .actions2{display:flex;gap:9px;margin-top:18px}.orbit{position:relative;width:280px;height:280px;margin:auto;display:grid;place-items:center}.orb{position:absolute;inset:35px;border:1px dashed rgba(140,151,190,.27);border-radius:50%}.orb.b{inset:65px;border-style:solid;opacity:.5}.core{width:92px;height:92px;border-radius:27px;background:linear-gradient(145deg,#7b6cff,#5148c7);display:grid;place-items:center;font-size:35px;box-shadow:0 0 60px rgba(119,105,255,.3)}.node{position:absolute;background:#171d38;border:1px solid var(--line);padding:7px 9px;border-radius:8px;font-size:8px;font-weight:800;letter-spacing:.1em}.a{top:18px}.b2{right:4px;top:110px}.c{bottom:18px}.d{left:4px;top:110px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.metric{border:1px solid var(--line);background:rgba(17,23,45,.88);border-radius:13px;padding:14px;display:flex;gap:10px}.mi{width:32px;height:32px;border-radius:10px;background:rgba(119,105,255,.12);display:grid;place-items:center;color:#aba3ff}.metric label{display:block;font-size:9px;color:var(--muted)}.metric strong{display:block;font-size:23px;margin:2px 0}.metric small{display:block;font-size:9px;color:#7f89a6}.panel{border:1px solid var(--line);background:rgba(17,23,45,.84);border-radius:16px;padding:20px}.ph{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px}.ph h3{margin:0;font-size:18px}.sub{font-size:9px;color:#8791ae}.flow{display:flex;gap:8px;align-items:stretch}.flowcard{flex:1;min-height:174px;border:1px solid var(--line);background:#141a31;border-radius:13px;padding:15px;position:relative}.flowcard.human{background:linear-gradient(155deg,rgba(115,211,165,.1),#141a31);border-color:rgba(115,211,165,.22)}.fn{position:absolute;right:11px;top:9px;color:#69728f;font-size:9px}.fi{width:35px;height:35px;border-radius:10px;background:rgba(119,105,255,.12);display:grid;place-items:center;color:#a9a1ff;margin-bottom:15px}.human .fi{background:rgba(115,211,165,.1);color:#7bd9aa}.flowcard h4{font-size:13px;margin:0}.flowcard p{font-size:10px;color:#a6afc8;line-height:1.5}.arrow{align-self:center;color:#5d6680}.split{display:grid;grid-template-columns:1.4fr .6fr;gap:15px}.why{display:grid;grid-template-columns:1fr 1fr;gap:11px}.reason{border:1px solid var(--line);border-radius:11px;background:#13192f;padding:13px}.reason b{font-size:11px}.reason p{font-size:10px;color:#98a2bd;line-height:1.5;margin:7px 0 0}.emph{display:flex;flex-direction:column;justify-content:space-between}.quote{font-size:19px;line-height:1.35;margin:20px 0;color:#e8ebfa}.citation{font-size:9px;color:#8e98b5}.screen{display:grid;grid-template-columns:1.1fr .9fr;padding:0;overflow:hidden}.left,.right{padding:20px}.right{border-left:1px solid var(--line)}textarea{width:100%;min-height:405px;background:#0c1125;color:#dfe4f4;border:1px solid var(--line);border-radius:11px;padding:13px;font-size:11px;line-height:1.75;resize:vertical;outline:0}.editorActions{display:flex;justify-content:space-between;margin-top:11px;gap:10px}.score{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.score strong{font-size:43px;line-height:1}.ring{width:90px;height:90px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:10px;text-align:center;box-shadow:inset 0 0 0 5px rgba(239,143,155,.06);color:#ffafb9}.finding{background:#151b34;border:1px solid var(--line);border-radius:11px;padding:12px;margin:9px 0}.findingtop{display:flex;justify-content:space-between;gap:10px}.finding b{font-size:11px}.finding p{font-size:10px;color:#9da7c0;line-height:1.5;margin:6px 0}.risk{padding:5px 7px;border-radius:99px;font-size:8px;font-weight:800;text-transform:uppercase;background:rgba(239,143,155,.1);color:#ffb0b9;border:1px solid rgba(239,143,155,.2);white-space:nowrap}.ref{display:flex;justify-content:space-between;gap:8px;color:#8e99b6;font-size:8px}.status{font-size:8px;padding:5px 7px;border-radius:99px;background:rgba(241,182,109,.08);color:#f4c884;white-space:nowrap}.status.ok{background:rgba(115,211,165,.08);color:#8de2b6}.status.bad{background:rgba(239,143,155,.08);color:#ffadb8}.info{margin-top:15px;display:flex;gap:9px;background:rgba(119,105,255,.05);border:1px solid rgba(119,105,255,.16);padding:12px;border-radius:11px;color:#b8c1db;font-size:9px;line-height:1.5}.reviewcard{border:1px solid var(--line);background:#13192f;border-radius:13px;padding:15px;margin:11px 0}.reviewtop{display:flex;justify-content:space-between}.case{font-size:8px;color:#7b85a2;letter-spacing:.1em;text-transform:uppercase}.reviewtop h4{font-size:13px;margin:3px 0 0}.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}.field{font-size:8px;color:#818ba8;text-transform:uppercase;letter-spacing:.08em}.cols p{font-size:10px;color:#a6afc8;line-height:1.5}.refbox{font-size:8px;color:#99a3bf;border:1px solid var(--line);border-radius:9px;padding:9px}.reviewActions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px}.reviewActions div{display:flex;gap:7px}.ledgercards{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.ledgercard{border:1px solid var(--line);background:#141a31;border-radius:11px;padding:14px}.ledgercard h4{margin:5px 0 2px;font-size:13px}.ledgercard span,.ledgercard small{display:block;font-size:9px;color:#8490ad}.hash{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);background:#0e1328;border-radius:11px;padding:13px;margin-top:13px}.hash label{display:block;color:#808aa7;font-size:8px;text-transform:uppercase}.hash code{display:block;margin-top:5px;color:#b8c2da;font-size:9px;word-break:break-all}.note{font-size:9px;color:#98a2ba;margin:10px 0}.auditSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:13px}.search{width:320px;max-width:100%;background:#0e1328;border:1px solid var(--line);border-radius:10px;padding:9px;color:#78829f}.search input{border:0;outline:0;background:transparent;color:#fff;width:100%;font-size:10px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:9px 0}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;min-width:720px}th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;font-size:9px}th{background:#10152a;color:#78829e;text-transform:uppercase;font-size:8px}td{color:#b8c1d4}tr:last-child td{border-bottom:0}td code{color:#9ea9c5;font-size:8px}.knowl{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.kcard{border:1px solid var(--line);background:#141a31;border-radius:11px;padding:14px}.kicon{font-size:20px}.kcard .case{margin-top:12px}.kcard h4{font-size:13px;margin:5px 0}.kcard code{font-size:8px;color:#a59fff}.kcard p{font-size:9px;color:#99a4bf;line-height:1.5;min-height:55px}.kfoot{border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between;font-size:8px;color:#7f89a4}.modal{position:fixed;inset:0;background:rgba(2,4,12,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.modalbox{width:min(760px,100%);max-height:90vh;overflow:auto;border:1px solid var(--line);background:#10162c;border-radius:16px;padding:20px;box-shadow:0 25px 80px rgba(0,0,0,.4)}.modalhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.x{border:0;background:#171d34;color:#bac2d8;border-radius:9px;padding:8px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}.fieldbox{display:grid;gap:6px}.fieldbox.full{grid-column:1/-1}.fieldbox label{font-size:9px;color:#8690aa}.fieldbox input,.fieldbox select,.fieldbox textarea{min-height:auto;height:40px;padding:10px;background:#0b1022;border:1px solid var(--line);color:#fff;border-radius:9px}.fieldbox textarea{height:90px}.empty{padding:28px;text-align:center;color:#8993ae;border:1px dashed var(--line);border-radius:12px}.toast{position:fixed;right:20px;bottom:20px;background:#141b32;border:1px solid var(--line);padding:12px 14px;border-radius:11px;color:#dce2f1;font-size:10px;display:none;z-index:20;box-shadow:0 15px 40px rgba(0,0,0,.3)}.toast.show{display:block}.mini-btn{padding:7px 9px;font-size:9px;border-radius:8px}.approval-banner{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid rgba(115,211,165,.18);background:rgba(115,211,165,.05);border-radius:11px;margin:12px 0}.approval-banner b{font-size:10px}.approval-banner span{font-size:9px;color:#9fb7aa}@media(max-width:1100px){
+*{box-sizing:border-box}html{overflow-x:hidden}body{margin:0;background:radial-gradient(circle at 78% 0%,rgba(119,105,255,.12),transparent 27%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,textarea,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible{outline:2px solid var(--purple);outline-offset:2px}.app{min-height:100vh;display:flex}.side{width:250px;position:fixed;inset:0 auto 0 0;background:rgba(13,18,40,.96);border-right:1px solid var(--line);padding:22px 15px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px}.mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#7d6fff,#5149c7);display:grid;place-items:center;font-size:20px;box-shadow:0 12px 30px rgba(119,105,255,.26)}.brand b{display:block;font-size:13px;letter-spacing:.09em}.brand small{color:var(--muted);font-size:10px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#adb6ce;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:10px;align-items:center;font-size:12px}.nav button:hover{background:#151b33;color:white}.nav button.active{background:linear-gradient(90deg,rgba(119,105,255,.22),rgba(119,105,255,.05));color:#fff;box-shadow:inset 3px 0 0 var(--purple)}.main{margin-left:250px;width:calc(100% - 250px);padding:24px 30px 45px}.top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}.eyebrow{margin:0 0 7px;color:#818aa8;font-size:9px;text-transform:uppercase;letter-spacing:.14em}.top h1{margin:0;font-size:27px}.actions{display:flex;align-items:center;gap:9px}.live{font-size:10px;color:#aeb8cf;border:1px solid var(--line);padding:8px 10px;border-radius:99px}.live:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px}.btn{border:1px solid transparent;border-radius:10px;padding:10px 13px;font-size:11px;font-weight:700}.primary{color:#fff;background:linear-gradient(135deg,#7d70ff,#5a53c8);box-shadow:0 10px 24px rgba(119,105,255,.16)}.secondary{color:#c8cee1;background:#191f39;border-color:var(--line)}.grid{display:grid;gap:15px}.hero{min-height:355px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 82% 38%,rgba(119,105,255,.21),transparent 23%),linear-gradient(135deg,#151b35,#0d1225 70%);padding:30px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;overflow:hidden}.pill{display:inline-block;font-size:9px;color:#d0ccff;border:1px solid rgba(119,105,255,.25);background:rgba(119,105,255,.13);padding:6px 9px;border-radius:99px}.hero h2{font-size:36px;line-height:1.07;letter-spacing:-.035em;max-width:650px;margin:14px 0}.hero p{max-width:650px;color:#adb6cf;font-size:13px;line-height:1.65}.hero .actions2{display:flex;gap:9px;margin-top:18px}.orbit{position:relative;width:280px;height:280px;margin:auto;display:grid;place-items:center}.orb{position:absolute;inset:35px;border:1px dashed rgba(140,151,190,.27);border-radius:50%}.orb.b{inset:65px;border-style:solid;opacity:.5}.core{width:92px;height:92px;border-radius:27px;background:linear-gradient(145deg,#7b6cff,#5148c7);display:grid;place-items:center;font-size:35px;box-shadow:0 0 60px rgba(119,105,255,.3)}.node{position:absolute;background:#171d38;border:1px solid var(--line);padding:7px 9px;border-radius:8px;font-size:8px;font-weight:800;letter-spacing:.1em}.a{top:18px}.b2{right:4px;top:110px}.c{bottom:18px}.d{left:4px;top:110px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.metric{border:1px solid var(--line);background:rgba(17,23,45,.88);border-radius:13px;padding:14px;display:flex;gap:10px}.mi{width:32px;height:32px;border-radius:10px;background:rgba(119,105,255,.12);display:grid;place-items:center;color:#aba3ff}.metric label{display:block;font-size:9px;color:var(--muted)}.metric strong{display:block;font-size:23px;margin:2px 0}.metric small{display:block;font-size:9px;color:#7f89a6}.panel{border:1px solid var(--line);background:rgba(17,23,45,.84);border-radius:16px;padding:20px}.ph{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px}.ph h3{margin:0;font-size:18px}.sub{font-size:9px;color:#8791ae}.flow{display:flex;gap:8px;align-items:stretch}.flowcard{flex:1;min-height:174px;border:1px solid var(--line);background:#141a31;border-radius:13px;padding:15px;position:relative}.flowcard.human{background:linear-gradient(155deg,rgba(115,211,165,.1),#141a31);border-color:rgba(115,211,165,.22)}.fn{position:absolute;right:11px;top:9px;color:#69728f;font-size:9px}.fi{width:35px;height:35px;border-radius:10px;background:rgba(119,105,255,.12);display:grid;place-items:center;color:#a9a1ff;margin-bottom:15px}.human .fi{background:rgba(115,211,165,.1);color:#7bd9aa}.flowcard h4{font-size:13px;margin:0}.flowcard p{font-size:10px;color:#a6afc8;line-height:1.5}.arrow{align-self:center;color:#5d6680}.split{display:grid;grid-template-columns:1.4fr .6fr;gap:15px}.why{display:grid;grid-template-columns:1fr 1fr;gap:11px}.reason{border:1px solid var(--line);border-radius:11px;background:#13192f;padding:13px}.reason b{font-size:11px}.reason p{font-size:10px;color:#98a2bd;line-height:1.5;margin:7px 0 0}.emph{display:flex;flex-direction:column;justify-content:space-between}.quote{font-size:19px;line-height:1.35;margin:20px 0;color:#e8ebfa}.citation{font-size:9px;color:#8e98b5}.screen{display:grid;grid-template-columns:1.1fr .9fr;padding:0;overflow:hidden}.left,.right{padding:20px}.right{border-left:1px solid var(--line)}textarea{width:100%;min-height:405px;background:#0c1125;color:#dfe4f4;border:1px solid var(--line);border-radius:11px;padding:13px;font-size:11px;line-height:1.75;resize:vertical;outline:0}.editorActions{display:flex;justify-content:space-between;margin-top:11px;gap:10px}.score{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.score strong{font-size:43px;line-height:1}.ring{width:90px;height:90px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:10px;text-align:center;box-shadow:inset 0 0 0 5px rgba(239,143,155,.06);color:#ffafb9}.finding{background:#151b34;border:1px solid var(--line);border-radius:11px;padding:12px;margin:9px 0}.findingtop{display:flex;justify-content:space-between;gap:10px}.finding b{font-size:11px}.finding p{font-size:10px;color:#9da7c0;line-height:1.5;margin:6px 0}.risk{padding:5px 7px;border-radius:99px;font-size:8px;font-weight:800;text-transform:uppercase;background:rgba(239,143,155,.1);color:#ffb0b9;border:1px solid rgba(239,143,155,.2);white-space:nowrap}.ref{display:flex;justify-content:space-between;gap:8px;color:#8e99b6;font-size:8px}.status{font-size:8px;padding:5px 7px;border-radius:99px;background:rgba(241,182,109,.08);color:#f4c884;white-space:nowrap}.status.ok{background:rgba(115,211,165,.08);color:#8de2b6}.status.bad{background:rgba(239,143,155,.08);color:#ffadb8}.info{margin-top:15px;display:flex;gap:9px;background:rgba(119,105,255,.05);border:1px solid rgba(119,105,255,.16);padding:12px;border-radius:11px;color:#b8c1db;font-size:9px;line-height:1.5}.reviewcard{border:1px solid var(--line);background:#13192f;border-radius:13px;padding:15px;margin:11px 0}.reviewtop{display:flex;justify-content:space-between}.case{font-size:8px;color:#7b85a2;letter-spacing:.1em;text-transform:uppercase}.reviewtop h4{font-size:13px;margin:3px 0 0}.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}.field{font-size:8px;color:#818ba8;text-transform:uppercase;letter-spacing:.08em}.cols p{font-size:10px;color:#a6afc8;line-height:1.5}.refbox{font-size:8px;color:#99a3bf;border:1px solid var(--line);border-radius:9px;padding:9px}.reviewActions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:10px}.reviewActions div{display:flex;gap:7px}.ledgercards{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.ledgercard{border:1px solid var(--line);background:#141a31;border-radius:11px;padding:14px}.ledgercard h4{margin:5px 0 2px;font-size:13px}.ledgercard span,.ledgercard small{display:block;font-size:9px;color:#8490ad}.hash{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);background:#0e1328;border-radius:11px;padding:13px;margin-top:13px}.hash label{display:block;color:#808aa7;font-size:8px;text-transform:uppercase}.hash code{display:block;margin-top:5px;color:#b8c2da;font-size:9px;word-break:break-all}.note{font-size:9px;color:#98a2ba;margin:10px 0}.auditSummary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:13px}.search{width:320px;max-width:100%;background:#0e1328;border:1px solid var(--line);border-radius:10px;padding:9px;color:#78829f}.search input{border:0;outline:0;background:transparent;color:#fff;width:100%;font-size:10px}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:9px 0}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:11px}table{width:100%;border-collapse:collapse;min-width:720px}th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;font-size:9px}th{background:#10152a;color:#78829e;text-transform:uppercase;font-size:8px}td{color:#b8c1d4}tr:last-child td{border-bottom:0}td code{color:#9ea9c5;font-size:8px}.knowl{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.kcard{border:1px solid var(--line);background:#141a31;border-radius:11px;padding:14px}.kicon{font-size:20px}.kcard .case{margin-top:12px}.kcard h4{font-size:13px;margin:5px 0}.kcard code{font-size:8px;color:#a59fff}.kcard p{font-size:9px;color:#99a4bf;line-height:1.5;min-height:55px}.kfoot{border-top:1px solid var(--line);padding-top:8px;display:flex;justify-content:space-between;font-size:8px;color:#7f89a4}.modal{position:fixed;inset:0;background:rgba(2,4,12,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.modalbox{width:min(760px,100%);max-height:90vh;overflow:auto;border:1px solid var(--line);background:#10162c;border-radius:16px;padding:20px;box-shadow:0 25px 80px rgba(0,0,0,.4)}.modalhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.x{border:0;background:#171d34;color:#bac2d8;border-radius:9px;padding:8px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}.fieldbox{display:grid;gap:6px}.fieldbox.full{grid-column:1/-1}.fieldbox label{font-size:9px;color:#8690aa}.fieldbox input,.fieldbox select,.fieldbox textarea{min-height:auto;height:40px;padding:10px;background:#0b1022;border:1px solid var(--line);color:#fff;border-radius:9px}.fieldbox textarea{height:90px}.empty{padding:28px;text-align:center;color:#8993ae;border:1px dashed var(--line);border-radius:12px}.toast{position:fixed;right:20px;bottom:20px;background:#141b32;border:1px solid var(--line);padding:12px 14px;border-radius:11px;color:#dce2f1;font-size:10px;display:none;z-index:20;box-shadow:0 15px 40px rgba(0,0,0,.3)}.toast.show{display:block}.mini-btn{padding:7px 9px;font-size:9px;border-radius:8px}.approval-banner{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid rgba(115,211,165,.18);background:rgba(115,211,165,.05);border-radius:11px;margin:12px 0}.approval-banner b{font-size:10px}.approval-banner span{font-size:9px;color:#9fb7aa}.simhero{display:grid;grid-template-columns:1fr 150px;gap:18px;align-items:center;margin:10px 0 15px;padding:18px;border:1px solid var(--line);background:linear-gradient(135deg,#151b35,#0e1327);border-radius:13px}.simhero h2{margin:8px 0;font-size:24px;line-height:1.18}.simhero p{margin:0;color:#9da7c0;font-size:10px;line-height:1.6}.simscore{border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;background:#0d1226}.simscore strong{display:block;font-size:32px}.simscore span{display:block;color:#7f89a6;font-size:8px;margin-top:4px}.simcards{display:grid;gap:8px}.simrow{display:grid;grid-template-columns:42px minmax(0,1fr) 90px;gap:11px;align-items:center;padding:11px 12px;border:1px solid var(--line);background:#141a31;border-radius:11px}.simrow>span{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#0e1328;color:#8f99b6;font-size:8px;font-weight:800}.simrow b{display:block;font-size:10px}.simrow small{display:block;margin-top:3px;color:#8f99b4;font-size:8px;line-height:1.45}.simrow em{font-size:8px;font-style:normal;text-align:right;color:#7e88a6}.simrow.done{border-color:rgba(115,211,165,.2);background:rgba(115,211,165,.04)}.simrow.done>span{background:rgba(115,211,165,.1);color:#83dcae}.simrow.done em{color:#83dcae}.simrow.current{border-color:rgba(119,105,255,.35);background:rgba(119,105,255,.07)}.simrow.current>span{background:rgba(119,105,255,.12);color:#b0a9ff}.simrow.current em{color:#b0a9ff}.simactions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:13px}.simactions .btn{min-width:170px}
+@media(max-width:1100px){
   .side{width:220px}
   .main{margin-left:220px;width:calc(100% - 220px);padding:20px 22px 40px;min-width:0}
   .hero{grid-template-columns:1fr .62fr;padding:25px}
@@ -95,6 +96,7 @@
   .tablewrap{max-width:100%}
 }
 
+.simhero{grid-template-columns:1fr;padding:14px}.simhero h2{font-size:21px}.simscore{display:flex;justify-content:space-between;align-items:center;text-align:left}.simscore strong{font-size:25px}.simrow{grid-template-columns:34px minmax(0,1fr) 62px;padding:10px}.simrow small{font-size:8px}.simactions{display:grid}.simactions .btn{width:100%;min-width:0}
 @media(max-width:560px){
   .side{
     position:static;
@@ -199,7 +201,8 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <div class="modal" id="modal"><div class="modalbox" id="modalbox"></div></div>
 <div class="toast" id="toast"></div>
 <script>
-const STORAGE_KEY='shariaguard-prototype-v4';
+const STORAGE_KEY='shariaguard-prototype-v5';
+const PREVIOUS_STORAGE_KEY='shariaguard-prototype-v4';
 const demo=`AKAD MUDHARABAH PEMBIAYAAN DIGITAL
 
 Pemilik dana menyediakan modal sebesar Rp20.000.000 kepada pengelola usaha.
@@ -208,18 +211,30 @@ Pengelola wajib menyampaikan laporan usaha setiap bulan.
 Keterlambatan pembayaran dikenakan biaya administrasi Rp50.000 yang menjadi pendapatan platform.
 Para pihak menyetujui akad secara elektronik sebelum pencairan dana.`;
 
-const defaultState={contract:'',selectedAkad:'Mudharabah',screened:{akad:'Belum dipilih',score:100,findings:[]},findings:[],hash:'',status:'KOSONG',events:[],contracts:[],settings:{institution:'SHARIAGUARD',dpsName:'DPS'},currentContractId:'',contractOwner:''};
+const defaultState={contract:'',selectedAkad:'Mudharabah',screened:{akad:'Belum dipilih',score:100,findings:[]},findings:[],hash:'',status:'KOSONG',events:[],contracts:[],settings:{institution:'SHARIAGUARD',dpsName:'DPS'},currentContractId:'',contractOwner:'',simulation:{active:false,scenario:'main',step:0}};
 
+function normalizeEvents(events){
+  if(!Array.isArray(events))return [];
+  return events.map((e,i)=>Array.isArray(e)?{id:e[0]||'EVT-'+String(i+1).padStart(3,'0'),time:e[1]||'—',actor:e[2]||'—',action:e[3]||'—',akad:e[4]||'—',hash:e[5]||'—',contractId:e[6]||'—'}:{id:e.id||'EVT-'+String(i+1).padStart(3,'0'),time:e.time||'—',actor:e.actor||'—',action:e.action||'—',akad:e.akad||'—',hash:e.hash||'—',contractId:e.contractId||'—'});
+}
 function loadState(){
   try{
-    const x=JSON.parse(localStorage.getItem(STORAGE_KEY));
+    let raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw)raw=localStorage.getItem(PREVIOUS_STORAGE_KEY);
+    const x=raw?JSON.parse(raw):null;
     if(!x)return structuredClone(defaultState);
     const base=structuredClone(defaultState);
-    return {...base,...x,screened:{...base.screened,...(x.screened||{})},settings:{...base.settings,...(x.settings||{})}};
+    return {...base,...x,events:normalizeEvents(x.events),screened:{...base.screened,...(x.screened||{})},settings:{...base.settings,...(x.settings||{})},simulation:{...base.simulation,...(x.simulation||{})}};
   }catch(e){return structuredClone(defaultState)}
 }
 let state=loadState();
 function persist(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+function nextEventId(){return 'EVT-'+String(state.events.length+1).padStart(3,'0')}
+function addEvent(actor,action,akad=state.screened.akad,hash='—',contractId=state.currentContractId||'—'){
+  state.events.unshift({id:nextEventId(),time:new Date().toLocaleTimeString('id-ID'),actor,action,akad,hash,contractId});
+}
+function severityLabel(severity){return ({high:'tinggi',medium:'sedang',low:'rendah',tinggi:'tinggi',sedang:'sedang',rendah:'rendah'})[severity]||severity||'rendah'}
+function statusLabel(status){return ({review:'Menunggu DPS',approved:'Disetujui',rejected:'Ditolak',DRAFT:'Draf',SCREENED:'Sudah diperiksa',DPS_APPROVED:'Disetujui DPS',DPS_REJECTED:'Ditolak DPS',COMMITTED:'Tersimpan',KOSONG:'Belum ada akad'})[status]||status||'—'}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
 function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,' ').trim()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
@@ -228,7 +243,7 @@ function scan(s,forcedAkad){
   const t=norm(s), f=[];
   const mud=/mudharabah|qiradh/.test(t), mur=/murabahah/.test(t), mus=/musyarakah/.test(t);
   if(mud&&!/(nisbah|rasio).{0,80}(hasil|bagi)/.test(t))
-    f.push({id:'F-001',issue:'Nisbah bagi hasil belum jelas',severity:'tinggi',clause:'Nisbah bagi hasil belum ditemukan dengan jelas.',exp:'Rasio bagi hasil perlu disepakati sejak awal; bagian ini perlu diperiksa DPS.',ref:'DSN-MUI Fatwa 07/DSN-MUI/IV/2000 tentang Pembiayaan Mudharabah (Qiradh)',status:'review'});
+    f.push({id:'F-001',issue:'Nisbah bagi hasil belum jelas',severity:'medium',clause:'Nisbah bagi hasil belum ditemukan dengan jelas.',exp:'Rasio bagi hasil perlu disepakati sejak awal; bagian ini perlu diperiksa DPS.',ref:'DSN-MUI Fatwa 07/DSN-MUI/IV/2000 tentang Pembiayaan Mudharabah (Qiradh)',status:'review'});
   if(mur&&!/(harga pokok|harga perolehan|cost price)/.test(t))
     f.push({id:'F-003',issue:'Harga pokok belum jelas',severity:'high',clause:'Harga pokok barang belum ditemukan dengan jelas.',exp:'Sistem belum menemukan harga pokok/perolehan dengan jelas.',ref:'DSN-MUI Fatwa 04/DSN-MUI/IV/2000 tentang Murabahah',status:'review'});
   if(/(late fee|biaya keterlambatan|denda keterlambatan|keterlambatan).{0,100}(pendapatan|income|platform)/.test(t))
@@ -249,14 +264,14 @@ async function sha(v){
   return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
 
-const tabs=[['overview','▦','Beranda'],['screening','⌕','Periksa Akad'],['review','◉','Pemeriksaan DPS'],['ledger','◈','Catatan Akad'],['audit','≡','Riwayat'],['knowledge','▤','Referensi']];
+const tabs=[['overview','▦','Beranda'],['simulation','▷','Simulasi'],['screening','⌕','Periksa Akad'],['review','◉','Pemeriksaan DPS'],['ledger','◈','Catatan Akad'],['audit','≡','Riwayat'],['knowledge','▤','Referensi']];
 function nav(){
   document.getElementById('nav').innerHTML=tabs.map(t=>`<button data-tab="${t[0]}" onclick="go('${t[0]}')"><b>${t[1]}</b><span>${t[2]}</span></button>`).join('');
 }
 function go(tab){
   document.getElementById('pageTitle').textContent=tabs.find(x=>x[0]===tab)[2];
   document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
-  ({overview,screening,review,ledger,audit,knowledge}[tab]||overview)();
+  ({overview,simulation,screening,review,ledger,audit,knowledge}[tab]||overview)();
 }
 
 function closeModal(){document.getElementById('modal').classList.remove('open')}
@@ -273,7 +288,7 @@ function overview(){
     <div class="metric"><div class="mi">!</div><div><label>Perlu diperiksa</label><strong>${state.contracts.filter(c=>c.status==='Menunggu DPS').length+pending}</strong><small>Menunggu tindakan</small></div></div>
     <div class="metric"><div class="mi">◒</div><div><label>Nilai pemeriksaan</label><strong>${state.screened.score}%</strong><small>${esc(state.screened.akad)}</small></div></div>
   </section>
-  <section id="flow" class="panel"><div class="ph"><div><p class="eyebrow">Alur sistem</p><h3>Alur pemeriksaan</h3></div></div><div class="flow">
+  <section id="flow" class="panel"><div class="ph"><div><p class="eyebrow">Alur sistem</p><h3>Alur pemeriksaan</h3></div><button class="btn secondary mini-btn" onclick="go('simulation')">▷ Buka simulasi lengkap</button></div><div class="flow">
     <div class="flowcard"><span class="fn">01</span><div class="fi">⌕</div><h4>Pemeriksaan dengan AI</h4><p>AI mencari bagian penting dalam akad dan mencocokkannya dengan referensi yang tersedia.</p></div><div class="arrow">→</div>
     <div class="flowcard human"><span class="fn">H</span><div class="fi">◉</div><h4>Pemeriksaan DPS</h4><p>DPS dapat menyetujui atau menolak bagian yang ditandai. Keputusan akhir tetap pada DPS.</p></div><div class="arrow">→</div>
     <div class="flowcard"><span class="fn">02</span><div class="fi">◈</div><h4>Pencatatan akad</h4><p>Simpan sidik digital dari akad yang sudah disetujui.</p></div><div class="arrow">→</div>
@@ -281,6 +296,7 @@ function overview(){
   </div></section>
   <section class="split"><div class="panel"><div class="ph"><h3>Mulai</h3></div><div class="why">
     <div class="reason" style="cursor:pointer" onclick="newContract()"><b>Akad baru</b><p>Buat akad baru dan periksa isinya.</p></div>
+    <div class="reason" style="cursor:pointer" onclick="go('simulation')"><b>Simulasi lengkap</b><p>Ikuti skenario utama sampai pencatatan dan riwayat.</p></div>
     <div class="reason" style="cursor:pointer" onclick="go('audit')"><b>Riwayat</b><p>Lihat hasil dan aktivitas sebelumnya.</p></div>
   </div></div>
   <div class="panel emph"><div class="ph"><h3>Prinsip utama</h3><span>✓</span></div><div class="quote">AI membantu menemukan bagian yang perlu diperiksa. Keputusan akhir tetap pada DPS.</div><span class="citation">AI membantu, manusia yang memutuskan</span></div></section>
@@ -302,7 +318,7 @@ function renderTemuan(fs){
   if(!fs.length)return '<div class="empty">✓ Tidak ada bagian yang ditandai oleh sistem. Keputusan akhir tetap memerlukan pemeriksaan DPS.</div>';
   return fs.map(f=>{
     const st=f.status==='approved'?'<span class="status ok">Disetujui</span>':f.status==='rejected'?'<span class="status bad">Ditolak</span>':'<span class="status">Menunggu DPS</span>';
-    return `<div class="finding"><div class="findingtop"><b>${esc(f.issue)}</b><span class="risk">${esc(f.severity==='tinggi'?'tinggi':f.severity==='sedang'?'sedang':'rendah')}</span></div><p>${esc(f.clause)}</p><div class="ref"><span>${esc(f.ref)}</span>${st}</div></div>`
+    return `<div class="finding"><div class="findingtop"><b>${esc(f.issue)}</b><span class="risk">${esc(severityLabel(f.severity))}</span></div><p>${esc(f.clause)}</p><div class="ref"><span>${esc(f.ref)}</span>${st}</div></div>`
   }).join('')
 }
 function runScan(){
@@ -310,74 +326,102 @@ function runScan(){
   if(!state.contract){toast('Masukkan teks akad terlebih dahulu.');return;}
   state.screened=scan(state.contract,state.selectedAkad);
   state.findings=state.screened.findings;
+  state.hash='';
+  state.currentContractId='';
   state.status='SCREENED';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'AI','Ditandai',state.screened.akad,'—']);
-  persist();screening();toast('Pemeriksaan selesai — temuan siap diperiksa DPS.')
+  addEvent('AI','Ditandai',state.screened.akad,'—','—');
+  if(state.simulation.active)state.simulation.step=2;
+  persist();screening();toast(state.findings.length?`Pemeriksaan selesai — ${state.findings.length} temuan siap diperiksa DPS.`:'Pemeriksaan selesai — tidak ada bagian yang ditandai.')
 }
-
 function review(){
   const fs=state.findings;
-  document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Keputusan DPS</p><h3>Pemeriksaan DPS</h3></div><span class="pill">Menunggu keputusan</span></div>
-  <div class="info">◉ <div><b>Keputusan DPS.</b> Temuan AI hanya menjadi bahan pemeriksaan. Keputusan akhir tetap pada DPS.</div></div>
-  ${fs.length?fs.map(f=>reviewCard(f)).join(''):'<div class="empty">Belum ada akad yang perlu diperiksa. Periksa akad terlebih dahulu.</div>'}</div>`
+  const approved=fs.length>0&&fs.every(f=>f.status==='approved');
+  const rejected=fs.some(f=>f.status==='rejected');
+  const header=approved?'Disetujui':rejected?'Ada penolakan':'Menunggu keputusan';
+  document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Keputusan DPS</p><h3>Pemeriksaan DPS</h3></div><span class="pill">${header}</span></div>
+  <div class="info">◉ <div><b>Keputusan DPS.</b> Temuan sistem hanya menjadi bahan pemeriksaan. Keputusan akhir tetap pada DPS.</div></div>
+  ${fs.length?fs.map(f=>reviewCard(f)).join(''):'<div class="empty">Belum ada temuan dari pemeriksaan. Periksa akad terlebih dahulu untuk mendapatkan bahan pemeriksaan DPS.</div>'}
+  ${!fs.length&&state.status==='SCREENED'?'<div class="reviewActions"><span class="sub">Tidak ada temuan.</span><button class="btn primary" onclick="approveAkad()">Setujui akad</button></div>':''}
+  ${approved?'<div class="approval-banner"><div><b>✓ Semua bagian telah disetujui DPS.</b><span>Akad siap masuk ke Catatan Akad.</span></div><button class="btn primary mini-btn" onclick="go(\'ledger\')">Buka catatan akad →</button></div>':''}
+  ${rejected?'<div class="info">✕ <div><b>Akad belum dapat dicatat.</b> Ada bagian yang ditolak DPS. Periksa ulang isi akad atau mulai akad baru.</div></div>':''}
+  </div>`
 }
 function reviewCard(f){
-  return `<article class="reviewcard"><div class="reviewtop"><div><span class="case">${esc(f.id)}</span><h4>${esc(f.issue)}</h4></div><span class="risk">${esc(f.severity)}</span></div>
-  <div class="cols"><div><span class="field">Bagian yang ditandai</span><p>${esc(f.clause)}</p></div><div><span class="field">Alasan AI</span><p>${esc(f.exp)}</p></div></div>
+  const processed=f.status!=='review';
+  return `<article class="reviewcard"><div class="reviewtop"><div><span class="case">${esc(f.id)}</span><h4>${esc(f.issue)}</h4></div><span class="risk">${esc(severityLabel(f.severity))}</span></div>
+  <div class="cols"><div><span class="field">Bagian yang ditandai</span><p>${esc(f.clause)}</p></div><div><span class="field">Alasan sistem</span><p>${esc(f.exp)}</p></div></div>
   <div class="refbox">${esc(f.ref)}</div>
-  <div class="reviewActions"><span class="status ${f.status==='approved'?'ok':f.status==='rejected'?'bad':''}">${f.status==='review'?'Menunggu DPS':esc(f.status)}</span>
-  <div><button class="btn secondary mini-btn" onclick="rejectFinding('${f.id}')">Tolak</button><button class="btn primary mini-btn" onclick="approveFinding('${f.id}')">Setujui</button></div></div></article>`
+  <div class="reviewActions"><span class="status ${f.status==='approved'?'ok':f.status==='rejected'?'bad':''}">${esc(statusLabel(f.status))}</span>
+  <div>${processed?'<span class="sub">Tindakan sudah dicatat.</span>':`<button class="btn secondary mini-btn" onclick="rejectFinding('${f.id}')">Tolak</button><button class="btn primary mini-btn" onclick="approveFinding('${f.id}')">Setujui</button>`}</div></div></article>`
 }
 function rejectFinding(id){
+  const target=state.findings.find(f=>f.id===id);
+  if(!target||target.status!=='review'){toast('Bagian ini sudah diproses.');return;}
   state.findings=state.findings.map(f=>f.id===id?{...f,status:'rejected'}:f);
   state.status='DPS_REJECTED';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),state.settings.dpsName,'Ditolak',state.screened.akad,'—']);
+  state.hash='';
+  addEvent(state.settings.dpsName,'Ditolak',state.screened.akad,'—',state.currentContractId||'—');
+  if(state.simulation.active&&state.simulation.scenario==='problem')state.simulation.step=3;
   persist();review();toast('Penolakan DPS berhasil dicatat.')
+}
+function approveAkad(){
+  if(state.status!=='SCREENED'||state.findings.length){toast('Tidak ada akad tanpa temuan yang dapat disetujui pada tahap ini.');return;}
+  state.status='DPS_APPROVED';
+  state.hash='';
+  addEvent(state.settings.dpsName,'Disetujui',state.screened.akad,'—',state.currentContractId||'—');
+  if(state.simulation.active)state.simulation.step=3;
+  persist();ledger();toast('Akad disetujui DPS dan siap dicatat.')
 }
 async function approveFinding(id){
   const target=state.findings.find(f=>f.id===id);
   if(!target || target.status!=='review'){toast('Bagian ini sudah diproses.');return;}
   state.findings=state.findings.map(f=>f.id===id?{...f,status:'approved'}:f);
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'DPS','Disetujui',state.screened.akad,'—']);
   state.status='DPS_APPROVED';
   state.hash='';
-  persist();
+  addEvent(state.settings.dpsName,'Disetujui',state.screened.akad,'—',state.currentContractId||'—');
   const allApproved=state.findings.length>0 && state.findings.every(f=>f.status==='approved');
-  if(allApproved){ledger();toast('Semua bagian disetujui DPS.');}
-  else{review();toast('Bagian disetujui. Lanjutkan pemeriksaan.');}
+  if(allApproved){
+    if(state.simulation.active&&state.simulation.scenario==='main')state.simulation.step=3;
+    persist();ledger();toast('Semua bagian disetujui DPS.');
+  }else{
+    persist();review();toast('Bagian disetujui. Lanjutkan pemeriksaan.');
+  }
 }
-
 function ledger(){
-  const approved=state.findings.length>0 && state.findings.every(f=>f.status==='approved');
+  const rejected=state.findings.some(f=>f.status==='rejected')||state.status==='DPS_REJECTED';
+  const approved=state.status==='DPS_APPROVED' && (!state.findings.length || state.findings.every(f=>f.status==='approved'));
+  const committed=state.status==='COMMITTED';
   document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Tahap 2</p><h3>Pencatatan akad</h3></div><span class="pill">Keutuhan akad</span></div>
-  ${approved?'<div class="approval-banner"><div><b>✓ Akad sudah disetujui DPS</b><span>Temuan yang disetujui dapat dicatat.</span></div><span class="status ok">SIAP</span></div>':'<div class="info">Belum ada temuan yang disetujui DPS. Kembali ke pemeriksaan DPS.</div>'}
-  <div class="ledgercards"><div class="ledgercard"><span>Akad</span><h4>${esc(state.screened.akad)}</h4><small>Hanya akad yang disetujui</small></div><div class="ledgercard"><span>Tempat data</span><h4>Perangkat ini</h4><small></small></div><div class="ledgercard"><span>Data pribadi</span><h4>Tidak dicatat di sini</h4><small>Data pribadi tidak disimpan di bagian ini</small></div></div>
-  <div class="hash"><div><label>Sidik digital akad</label><code>${state.hash||'Belum dibuat'}</code></div><button class="btn primary" onclick="commitRecord()" ${approved?'':'disabled'}>${state.hash?'Simpan catatan':'Buat & simpan'} →</button></div>
-  <div class="note">${state.status==='TERSIMPAN'?'Catatan sudah disimpan di perangkat.':'Sidik digital membantu mengetahui apakah isi akad berubah.'}</div>
+  ${approved||committed?'<div class="approval-banner"><div><b>✓ Akad sudah disetujui DPS</b><span>Hasil pemeriksaan dapat dicatat di perangkat.</span></div><span class="status ok">SIAP</span></div>':rejected?'<div class="info">✕ <div><b>Pencatatan diblokir.</b> Ada bagian yang ditolak DPS. Periksa ulang akad sebelum menyimpannya.</div></div>':'<div class="info">Belum ada keputusan DPS yang siap dicatat. Kembali ke pemeriksaan DPS.</div>'}
+  <div class="ledgercards"><div class="ledgercard"><span>Akad</span><h4>${esc(state.screened.akad)}</h4><small>Hanya akad yang lolos pemeriksaan DPS</small></div><div class="ledgercard"><span>Pemilik / nasabah</span><h4>${esc(state.contractOwner||'—')}</h4><small>Identitas hanya contoh di perangkat demo</small></div><div class="ledgercard"><span>Tempat data</span><h4>Perangkat ini</h4><small>Disimpan di browser</small></div></div>
+  <div class="hash"><div><label>Sidik digital akad</label><code>${state.hash||'Belum dibuat'}</code></div><button class="btn primary" onclick="commitRecord()" ${approved&&!committed?'':'disabled'}>${committed?'Sudah tersimpan':state.hash?'Simpan catatan':'Buat & simpan'} →</button></div>
+  <div class="note">${committed?'Catatan sudah disimpan di perangkat.':'Sidik digital membantu mengetahui apakah isi akad berubah setelah dicatat.'}</div>
+  <div class="reviewActions" style="margin-top:14px"><span class="sub">Lanjutkan alur</span><div>${rejected?'<button class="btn secondary mini-btn" onclick="go(\'screening\')">Periksa ulang</button>':''}<button class="btn secondary mini-btn" onclick="go(\'audit\')">Lihat riwayat →</button></div></div>
 </div></div>`
 }
 async function commitRecord(){
-  if(state.status==='COMMITTED'){toast('Akad ini sudah dicatat.');return;}
-  if(!state.findings.length || !state.findings.every(f=>f.status==='approved')){toast('Semua temuan harus disetujui DPS terlebih dahulu.');return;}
+  if(state.status==='COMMITTED'||state.currentContractId){toast('Akad ini sudah dicatat.');return;}
+  if(state.status!=='DPS_APPROVED'||(state.findings.length && !state.findings.every(f=>f.status==='approved'))){toast('Keputusan DPS belum lengkap. Semua temuan harus disetujui terlebih dahulu.');return;}
   if(!state.hash)state.hash=await sha(state.contract+'|'+state.screened.akad+'|COMMIT|'+Date.now());
   state.status='COMMITTED';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'Catatan','Disimpan',state.screened.akad,state.hash.slice(0,4)+'…'+state.hash.slice(-4)]);
   const id='C-'+String(state.contracts.length+1).padStart(3,'0');
-  state.contracts.unshift({id,akad:state.screened.akad,status:'Disetujui',risk:'Terverifikasi',owner:state.contractOwner||'—',date:new Date().toISOString().slice(0,10),hash:state.hash.slice(0,4)+'…'+state.hash.slice(-4)});
+  state.currentContractId=id;
+  const shortHash=state.hash.slice(0,4)+'…'+state.hash.slice(-4);
+  addEvent('Catatan','Disimpan',state.screened.akad,shortHash,id);
+  state.contracts.unshift({id,akad:state.screened.akad,status:'Disetujui',risk:'Terverifikasi',owner:state.contractOwner||'—',date:new Date().toISOString().slice(0,10),hash:shortHash});
+  if(state.simulation.active&&state.simulation.scenario==='main')state.simulation.step=4;
   persist();ledger();toast('Catatan akad berhasil disimpan.')
 }
-
 function audit(){
   const q=norm((document.getElementById('auditQ')?.value||''));
-  const rows=state.events.filter(e=>!q||norm(e.join(' ')).includes(q));
+  const rows=state.events.filter(e=>!q||norm([e.id,e.time,e.actor,e.action,e.akad,e.hash,e.contractId].join(' ')).includes(q));
   document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Tahap 3</p><h3>Riwayat aktivitas</h3></div><span class="sub">DPS · Pemeriksa</span></div>
-  <div class="auditSummary"><div class="metric"><div class="mi">⌕</div><div><label>Aktivitas</label><strong>${state.events.length}</strong><small>Perangkat ini</small></div></div><div class="metric"><div class="mi">✓</div><div><label>Akad tersimpan</label><strong>${state.events.filter(e=>e[3]==='Disimpan').length}</strong><small>Catatan demo</small></div></div><div class="metric"><div class="mi">!</div><div><label>Temuan</label><strong>${state.findings.length}</strong><small>Akad saat ini</small></div></div></div>
+  <div class="auditSummary"><div class="metric"><div class="mi">⌕</div><div><label>Aktivitas</label><strong>${state.events.length}</strong><small>Perangkat ini</small></div></div><div class="metric"><div class="mi">✓</div><div><label>Akad tersimpan</label><strong>${state.events.filter(e=>e.action==='Disimpan').length}</strong><small>Catatan akad</small></div></div><div class="metric"><div class="mi">!</div><div><label>Temuan</label><strong>${state.findings.length}</strong><small>Akad saat ini</small></div></div></div>
   <div class="toolbar"><div class="search">⌕ <input id="auditQ" placeholder="Cari aktivitas" value="${esc(q)}" oninput="audit()"></div><span class="sub">${rows.length} aktivitas</span></div>
-  <div class="tablewrap"><table><thead><tr><th>Aktivitas</th><th>Waktu</th><th>Pelaku</th><th>Tindakan</th><th>Akad</th><th>Sidik</th></tr></thead><tbody>
-  ${rows.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td>${esc(r[4])}</td><td><code>${esc(r[5])}</code></td></tr>`).join('')}</tbody></table></div>
-  <div class="info">🔎 <div><b>Riwayat.</b> Riwayat aktivitas menampilkan siapa yang melakukan tindakan, apa tindakannya, dan akad yang diproses.</div></div></div>`
+  <div class="tablewrap"><table><thead><tr><th>Aktivitas</th><th>Waktu</th><th>Pelaku</th><th>Tindakan</th><th>Akad</th><th>ID catatan</th><th>Sidik</th></tr></thead><tbody>
+  ${rows.length?rows.map(r=>`<tr><td><b>${esc(r.id)}</b></td><td>${esc(r.time)}</td><td>${esc(r.actor)}</td><td>${esc(r.action)}</td><td>${esc(r.akad)}</td><td>${esc(r.contractId)}</td><td><code>${esc(r.hash)}</code></td></tr>`).join(''):'<tr><td colspan="7"><div class="empty">Belum ada aktivitas yang cocok.</div></td></tr>'}</tbody></table></div>
+  <div class="info">🔎 <div><b>Riwayat.</b> Riwayat aktivitas menampilkan siapa yang melakukan tindakan, apa tindakannya, akad yang diproses, dan ID catatannya.</div></div></div>`
 }
-
 function knowledge(){
   document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Referensi</p><h3>Referensi yang digunakan</h3></div><span class="pill">Daftar referensi</span></div>
   <div class="knowl"><div class="kcard"><div class="kicon">▤</div><span class="case">DSN-MUI</span><h4>Murabahah</h4><code>04/DSN-MUI/IV/2000</code><p>Digunakan untuk pemeriksaan harga pokok dan margin.</p><div class="kfoot"><span>Referensi tersedia</span><span>↗</span></div></div>
@@ -389,7 +433,7 @@ function knowledge(){
 function newContract(){
   openModal(`<div class="modalhead"><div><p class="eyebrow">Buat akad</p><h3>Akad baru</h3></div><button class="x" onclick="closeModal()">✕</button></div>
   <div class="formgrid"><div class="fieldbox"><label>Jenis akad</label><select id="newAkad"><option>Mudharabah</option><option>Murabahah</option><option>Musyarakah</option><option>Akad digital</option></select></div><div class="fieldbox"><label>Pemilik / nasabah</label><input id="newOwner" value="Contoh nasabah"></div><div class="fieldbox full"><label>Isi akad</label><textarea id="newText">${esc(demo)}</textarea></div></div>
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Batal</button><button class="btn primary" onclick="saveNewContract()">Buat & periksa</button></div>`)
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn secondary" onclick="closeModal()">Batal</button><button class="btn primary" onclick="saveNewContract()">Buat akad</button></div>`)
 }
 function saveNewContract(){
   const text=document.getElementById('newText').value.trim();
@@ -402,23 +446,59 @@ function saveNewContract(){
   state.screened={akad:state.selectedAkad,score:100,findings:[]};
   state.findings=[];
   state.status='DRAFT';
-  state.events.unshift(['EVT-'+String(state.events.length+1).padStart(3,'0'),new Date().toLocaleTimeString('id-ID'),'Pengguna','Dibuat',state.selectedAkad,'—']);
-  persist();closeModal();screening();toast('Akad baru siap diperiksa.')
+  addEvent('Pengguna','Dibuat',state.selectedAkad,'—','—');
+  state.simulation={active:false,scenario:'main',step:0};
+  persist();closeModal();screening();toast('Akad baru dibuat. Tekan “Periksa akad” untuk memulai pemeriksaan.')
 }
 
-function startDemo(){
-  state.contract=demo;
-  state.selectedAkad='Mudharabah';
-  state.screened={akad:'Mudharabah',score:100,findings:[]};
+const problemDemo=`AKAD MURABAHAH PEMBIAYAAN DIGITAL
+
+Lembaga menjual barang kepada nasabah secara tangguh dengan margin yang disepakati.
+Nasabah menyatakan setuju membeli barang secara elektronik.
+Pembayaran dilakukan dalam beberapa kali angsuran sesuai jadwal.
+`;
+function startDemo(){beginScenario('main')}
+function beginScenario(scenario){
+  const isProblem=scenario==='problem';
+  state.contract=isProblem?problemDemo:demo;
+  state.selectedAkad=isProblem?'Murabahah':'Mudharabah';
+  state.screened={akad:state.selectedAkad,score:100,findings:[]};
   state.findings=[];
   state.hash='';
   state.status='DRAFT';
   state.currentContractId='';
-  state.contractOwner='Contoh nasabah';
-  persist();go('screening');toast('Contoh akad dimuat. Tekan “Periksa akad” untuk mulai.')
+  state.contractOwner=isProblem?'Contoh nasabah (Kasus 2)':'Contoh nasabah';
+  state.simulation={active:true,scenario,step:1};
+  addEvent('Pengguna','Dibuat',state.selectedAkad,'—','—');
+  persist();go('screening');toast(isProblem?'Kasus masalah Murabahah dimuat.':'Contoh utama dimuat. Tekan “Periksa akad” untuk mulai.');
+}
+function simulation(){
+  const active=state.simulation.active;
+  const scenario=state.simulation.scenario||'main';
+  const isProblem=scenario==='problem';
+  const steps=isProblem?[
+    ['01','Buat kasus Murabahah','Akad dibuat dengan satu bagian penting yang belum dijelaskan.'],
+    ['02','Periksa akad','Sistem mencari bagian yang perlu diperiksa.'],
+    ['03','Keputusan DPS','DPS menolak temuan yang tidak dapat disetujui.'],
+    ['04','Catatan diblokir','Pencatatan akad harus berhenti sampai akad diperbaiki.'],
+    ['05','Riwayat','Penolakan tetap tercatat di riwayat aktivitas.']
+  ]:[
+    ['01','Muat akad Mudharabah','Contoh akad pembiayaan digital dimuat sebagai bahan simulasi.'],
+    ['02','Periksa akad','Sistem menandai klausul biaya keterlambatan yang menjadi pendapatan platform.'],
+    ['03','Keputusan DPS','DPS menilai temuan dan menyetujui bagian yang ditandai.'],
+    ['04','Catatan akad','Akad yang sudah disetujui diberi sidik digital dan disimpan.'],
+    ['05','Riwayat','Aktivitas pemeriksaan dan pencatatan dapat ditelusuri kembali.']
+  ];
+  const current=Math.min(Math.max(Number(state.simulation.step||0),0),4);
+  const progress=active?Math.round((current/4)*100):0;
+  document.getElementById('content').innerHTML=`<div class="grid"><section class="panel"><div class="ph"><div><p class="eyebrow">Mode demo</p><h3>Simulasi lengkap SHARIAGUARD</h3><span class="sub">Gunakan mode ini saat presentasi untuk menunjukkan alur dari akad sampai riwayat.</span></div><span class="pill">${active?(isProblem?'Kasus 2 · perlu perbaikan':'Kasus 1 · alur berhasil'):'Belum dimulai'}</span></div>
+  <div class="simhero"><div><span class="pill">${isProblem?'Kasus masalah':'Skenario utama'}</span><h2>${isProblem?'Menemukan klausul penting sebelum akad dicatat.':'Memastikan akad pembiayaan digital diperiksa sebelum disetujui.'}</h2><p>${isProblem?'Akad Murabahah sengaja dibuat tanpa harga pokok agar terlihat bagaimana sistem mengarahkan pemeriksaan DPS dan memblokir pencatatan.':'Akad Mudharabah memuat nisbah yang jelas, tetapi juga memiliki klausul biaya keterlambatan yang menjadi pendapatan platform. Sistem menandai klausul tersebut untuk dinilai DPS.'}</p></div><div class="simscore"><strong>${progress}%</strong><span>progres demo</span></div></div>
+  <div class="simcards">${steps.map((s,i)=>`<div class="simrow ${i<current?'done':i===current?'current':''}"><span>${s[0]}</span><div><b>${s[1]}</b><small>${s[2]}</small></div><em>${i<current?'✓':i===current?'Saat ini':'•'}</em></div>`).join('')}</div>
+  <div class="simactions"><button class="btn primary" onclick="beginScenario('main')">Mulai skenario utama</button><button class="btn secondary" onclick="beginScenario('problem')">Mulai kasus masalah</button>${active&&current>=4?'<button class="btn secondary" onclick="go(\'audit\')">Buka riwayat →</button>':''}</div></section>
+  <section class="split"><div class="panel"><div class="ph"><div><p class="eyebrow">Cara presentasi</p><h3>Urutan demo</h3></div></div><div class="why"><div class="reason"><b>1 · Periksa</b><p>Tekan Periksa Akad dan tunjukkan nilai serta temuan sistem.</p></div><div class="reason"><b>2 · Jelaskan</b><p>Buka Referensi untuk menunjukkan dasar pemeriksaan yang dipakai.</p></div><div class="reason"><b>3 · Putuskan</b><p>Masuk ke Pemeriksaan DPS dan pilih Setujui atau Tolak.</p></div><div class="reason"><b>4 · Catat</b><p>Buka Catatan Akad, buat sidik digital, lalu simpan hasil.</p></div></div></div><div class="panel emph"><div class="ph"><h3>Prinsip demo</h3><span>✓</span></div><div class="quote">Sistem membantu menemukan bagian yang perlu diperiksa. DPS tetap menjadi pengambil keputusan.</div><span class="citation">Gunakan dua skenario untuk menunjukkan jalur berhasil dan jalur penolakan.</span></div></section></div>`;
 }
 
-nav();go('overview');
+nav();go('overview');nav();go('overview');
 </script>
 </body>
 </html>
