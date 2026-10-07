@@ -40,6 +40,7 @@ jobs:
           grep -q "function review" index.html
           grep -q "function commitRecord" index.html
           grep -q "function audit" index.html
+          grep -q "function simulation" index.html
           python3 - <<'PY' > /tmp/shariaguard.js
           from pathlib import Path
           import re
@@ -50,6 +51,11 @@ jobs:
           print(match.group(1))
           PY
           node --check /tmp/shariaguard.js
+          test "$(grep -o "nav();go('overview');" index.html | wc -l | tr -d ' ')" = "1"
+          if grep -q '^[[:space:]]*\.simhero{grid-template-columns:1fr;padding:14px}' index.html; then
+            echo "Unexpected global mobile simulation style found."
+            exit 1
+          fi
           echo "Prototype validation passed."
 
       - name: Prepare site
