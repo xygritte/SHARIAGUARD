@@ -52,10 +52,20 @@ jobs:
           PY
           node --check /tmp/shariaguard.js
           test "$(grep -o "nav();go('overview');" index.html | wc -l | tr -d ' ')" = "1"
-          if grep -q '^[[:space:]]*\.simhero{grid-template-columns:1fr;padding:14px}' index.html; then
-            echo "Unexpected global mobile simulation style found."
-            exit 1
-          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          marker = ".simhero{grid-template-columns:1fr;padding:14px}"
+          mobile = html.find(marker)
+          media = html.find("@media(max-width:560px){")
+          if mobile != -1 and media == -1:
+              raise SystemExit("Mobile simulation style exists without its media query")
+          if mobile != -1 and mobile < media:
+              raise SystemExit("Mobile simulation style leaked outside the 560px media query")
+          if html.count("nav();go('overview');") != 1:
+              raise SystemExit("Expected exactly one initial app render")
+          print("Responsive and initialization checks passed.")
+          PY
           echo "Prototype validation passed."
 
       - name: Prepare site
