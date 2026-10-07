@@ -74,6 +74,8 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          cp shariaguard.png _site/shariaguard.png
+          test -s _site/shariaguard.png
           touch _site/.nojekyll
 
       - name: Upload Pages artifact
