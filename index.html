@@ -196,7 +196,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 </aside>
 <main class="main">
-<header class="top"><div><p class="eyebrow">Pemeriksaan dan pencatatan akad</p><h1 id="pageTitle">Beranda</h1></div><div class="actions"><span class="live">Pemeriksaan akad</span><button class="btn primary" onclick="startDemo()">Coba contoh akad</button></div></header>
+<header class="top"><div><p class="eyebrow">Pemeriksaan dan pencatatan akad</p><h1 id="pageTitle">Beranda</h1></div><div class="actions"><span class="live">Pemeriksaan akad</span></div></header>
 <div id="content"></div>
 </main>
 </div>
@@ -397,7 +397,7 @@ function ledger(){
   const committed=state.status==='COMMITTED';
   document.getElementById('content').innerHTML=`<div class="panel"><div class="ph"><div><p class="eyebrow">Tahap 2</p><h3>Pencatatan akad</h3></div><span class="pill">Keutuhan akad</span></div>
   ${approved||committed?'<div class="approval-banner"><div><b>✓ Akad sudah disetujui DPS</b><span>Hasil pemeriksaan dapat dicatat di perangkat.</span></div><span class="status ok">SIAP</span></div>':rejected?'<div class="info">✕ <div><b>Pencatatan diblokir.</b> Ada bagian yang ditolak DPS. Periksa ulang akad sebelum menyimpannya.</div></div>':'<div class="info">Belum ada keputusan DPS yang siap dicatat. Kembali ke pemeriksaan DPS.</div>'}
-  <div class="ledgercards"><div class="ledgercard"><span>Akad</span><h4>${esc(state.screened.akad)}</h4><small>Hanya akad yang lolos pemeriksaan DPS</small></div><div class="ledgercard"><span>Pemilik / nasabah</span><h4>${esc(state.contractOwner||'—')}</h4><small>Identitas hanya contoh di perangkat demo</small></div><div class="ledgercard"><span>Tempat data</span><h4>Perangkat ini</h4><small>Disimpan di browser</small></div></div>
+  <div class="ledgercards"><div class="ledgercard"><span>Akad</span><h4>${esc(state.screened.akad)}</h4><small>Hanya akad yang lolos pemeriksaan DPS</small></div><div class="ledgercard"><span>Pemilik / nasabah</span><h4>${esc(state.contractOwner||'—')}</h4><small>Identitas hanya contoh di perangkat demo</small></div></div>
   <div class="hash"><div><label>Sidik digital akad</label><code>${state.hash||'Belum dibuat'}</code></div><button class="btn primary" onclick="commitRecord()" ${approved&&!committed?'':'disabled'}>${committed?'Sudah tersimpan':state.hash?'Simpan catatan':'Buat & simpan'} →</button></div>
   <div class="note">${committed?'Catatan sudah disimpan di perangkat.':'Sidik digital membantu mengetahui apakah isi akad berubah setelah dicatat.'}</div>
   <div class="reviewActions" style="margin-top:14px"><span class="sub">Lanjutkan alur</span><div>${rejected?'<button class="btn secondary mini-btn" onclick="go(\'screening\')">Periksa ulang</button>':''}<button class="btn secondary mini-btn" onclick="go(\'audit\')">Lihat riwayat →</button></div></div>
